@@ -4,6 +4,12 @@
 %         d - maximum total degree of the monomials
 
 % OUTPUTS: mlist - list of monomials
+
+% NOTE: this helper function is from the Gloptipoly library, see ROA Matlab codes in
+% http://homepages.laas.fr/henrion/
+% and references therein.
+
+
 function mlist = monolistYalToGlop(x,d)
     n = numel(x);
     mlist1 = repmat(x',numMonTot(n,d),1).^genPowGlopti(n,d);

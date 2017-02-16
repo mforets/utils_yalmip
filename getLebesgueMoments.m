@@ -12,7 +12,11 @@
 %               generates moments of the lebesgue measure up to degree 10 in Yalmip basis over the unit box
 %           (2) getLebesgueMomentsNew(10, [-1 -1 -1 ; 1 1 1], 0 )
 %               the same but in the Gloptipoly basis
- 
+
+% NOTE: this helper function is from the Gloptipoly library, see ROA Matlab codes in
+% http://homepages.laas.fr/henrion/
+% and references therein.
+
 function moments = getLebesgueMoments( d, box, YalmipBasis )
     if(~exist('YalmipBasis','var') || isempty(YalmipBasis))
         YalmipBasis = 0;
