@@ -43,11 +43,18 @@ xdom = linspace(I(1), I(2), 1e3);
 
 % check if the coefficients are evaluated or not
 if strfind(class(c_p(1)), 'sdpvar')
+    
     got_evaluated = 0;
     % try to evaluate
     c_p = value(c_p);
+    if any(isnan(c_p))
+        fprintf(2, 'Warning: NaN detected.\n');
+    end
+    
 elseif strfind(class(c_p(1)), 'double')
+    
     got_evaluated = 1;
+
 else
     error('Could not recognise coefficients type.')
 end
@@ -69,7 +76,9 @@ for i = 1:length(c_p)
     elseif ~got_evaluated
         
         % in some cases the value(..) might return a NaN (for instance if
-        % the parameter was removed when solving the SDP)
+        % the parameter was removed when solving the SDP. another situation
+        % when is when the input polynomial depends on more than one variable,
+        % and this variable has not been evaluated.)
         if ~isnan(c_p(i))
             p_coefficients_list(degree(mono_p(i))+1) = c_p(i);
         end
