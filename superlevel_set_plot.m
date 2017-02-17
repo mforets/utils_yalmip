@@ -35,7 +35,7 @@ function superlevel_set_plot(w, x, xb, alpha, options)
 %
 % >> ... 
 % >> diagnostic = optimize(F, obj, options); % sos problem involving w0
-% >> superlevel_set_plot(w0, x, xb, 1, []);
+% >> superlevel_set_plot(w0, x, xb, 1);
 %
 % NOTES: 
 %  

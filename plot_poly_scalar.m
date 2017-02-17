@@ -21,7 +21,7 @@ function plot_poly_scalar(p, x, I, options)
 % 1. Plot a polynomial in the interval [0,1] :
 %
 % >> sdpvar x 
-% >> plot_poly_scalar(x*(1-x), x, [0,1], [])
+% >> plot_poly_scalar(x*(1-x), x, [0,1])
 %
 % 2. More interestingly, if w = w(x) is the solution of a sos program (no
 % need to have it evaluated, done internally -- can be used just after 
@@ -29,7 +29,7 @@ function plot_poly_scalar(p, x, I, options)
 %
 % >> ... 
 % >> diagnostic = optimize(F, obj, options); % sos problem involving w
-% >> plot_poly_scalar(w, x, [0,1], []) 
+% >> plot_poly_scalar(w, x, [0,1]) 
 %
 % See also: plot_poly_scalar
 

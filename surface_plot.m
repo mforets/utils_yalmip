@@ -23,14 +23,14 @@ function surface_plot(w, x, xb, options)
 % 1. Surface plot of p(x) = x1*(1-x2) in the square [-4, 4].
 %
 % >> sdpvar x1 x2 
-% >> surface_plot(x1*(1-x2), [x1; x2], 4, [])
+% >> surface_plot(x1*(1-x2), [x1; x2], 4)
 %
 % 2. More interestingly, the target polynomial is the solution of a 
 % sos program:
 %
 % >> ... 
 % >> diagnostic = optimize(F, obj, options); % sos problem involving w0
-% >> surface_plot(w0, x, xb, []);
+% >> surface_plot(w0, x, xb);
 %
 % NOTES: 
 %  
