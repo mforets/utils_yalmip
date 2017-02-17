@@ -28,7 +28,7 @@ function superlevel_set_plot(w, x, xb, alpha, options)
 % 1. Plot {(x1, x2) : x1*(1-x2) >= 0}, in the square [-4, 4].
 %
 % >> sdpvar x1 x2 
-% >> superlevel_set_plot(x1*(1-x2), [x1; x2], 4, 0, [])
+% >> superlevel_set_plot(x1*(1-x2), [x1; x2], 4, 0)
 %
 % 2. More interestingly, the target polynomial is the solution of a 
 % sos program:
@@ -108,7 +108,13 @@ contour(X, Y, Z, 'LevelList', levels, 'fill', 'on', 'ShowText', 'on')
 
 axis equal
 
-title([num2str(alpha), '-superlevel set plot of polynomial w(x)'])
-xlabel('x_1') ; ylabel('x_2'); 
+title([num2str(alpha), '-superlevel set plot of polynomial ', inputname(1)])
+
+var_name = inputname(2);
+if isempty(var_name)
+    xlabel('x_1'); ylabel('x_2'); 
+else
+    xlabel([var_name '_1']); ylabel([var_name '_2']); 
+end
 
 end

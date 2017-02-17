@@ -86,7 +86,12 @@ Z = eval(p);
 
 surf(X,Y,Z)
 
-title('Surface plot of polynomial w(x_1, x_2)')
-xlabel('x_1') ; ylabel('x_2'); 
+title(['Surface plot of polynomial ' inputname(1)])
+var_name = inputname(2);
+if isempty(var_name)
+    xlabel('x_1'); ylabel('x_2'); 
+else
+    xlabel([var_name '_1']); ylabel([var_name '_2']); 
+end
 
 end

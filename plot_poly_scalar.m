@@ -96,4 +96,7 @@ px = polyval(p_coefficients_list, xdom);
 % finally, plot
 plot(xdom, px, 'b-');
 
+xlabel(inputname(2));
+title(['Plotting polynomial ' inputname(1)]);
+
 end
