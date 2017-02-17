@@ -1,3 +1,4 @@
+%================================================================================================
 % Computes the moments up to degree d of the n-dimensional lebesgue measure over a box
 
 % INPUTS:
@@ -13,9 +14,12 @@
 %           (2) getLebesgueMomentsNew(10, [-1 -1 -1 ; 1 1 1], 0 )
 %               the same but in the Gloptipoly basis
 
-% NOTE: this helper function is from the Gloptipoly library, see ROA Matlab codes in
+% NOTE: this helper function is from:
+% ROA - Matlab codes (including distributions of YALMIP and GloptiPoly 3, and using either MOSEK or SeDuMi which should be installed) for computing estimates of the region of attraction of a polynomial control system, following the developments described in D. Henrion, M. Korda, Convex computation of the region of attraction of polynomial control systems, LAAS-CNRS Research Report 12488, August 2012. Developed by Milan Korda. 
+% See Gloptipoly library and ROA Matlab codes in
 % http://homepages.laas.fr/henrion/
-% and references therein.
+% and references therein. 
+%================================================================================================
 
 function moments = getLebesgueMoments( d, box, YalmipBasis )
     if(~exist('YalmipBasis','var') || isempty(YalmipBasis))
