@@ -12,7 +12,8 @@ function superlevel_set_plot(w, x, xb, alpha, options)
 %
 %   "x" - sdpvar object, argument of w.
 %
-%   "xb" - defines a bounding box [-xb, xb]^2 for plotting.
+%   "xb" - defines the bounds for plotting. Can be either a single number,
+%   and [-xb, xb]^2 is assumed, or in the form: [-xb1 xb1; -xb2 xb2].
 %
 %   "alpha" - scalar, constraint on the contour plot. By defualt, the
 %   contour plot is 'filled'.
@@ -87,8 +88,18 @@ p = strrep(p, char(sdisplay(x(1))), 'X');
 p = strrep(p, char(sdisplay(x(2))), 'Y');
 
 % x- and y- range
-xrange = -xb:0.01:xb;
-yrange = -xb:0.01:xb;
+if size(xb,2) == 1
+    xrange = -xb:0.01:xb;
+    yrange = -xb:0.01:xb;
+elseif size(xb,2) > 1
+    if size(xb,1) == 1
+        xrange = xb(1):0.01:xb(2);
+        yrange = xb(1):0.01:xb(2);
+    else
+        xrange = xb(1,1):0.01:xb(1,2);
+        yrange = xb(2,1):0.01:xb(2,2);
+    end
+end
 
 [X, Y] = meshgrid(xrange, yrange);
 
