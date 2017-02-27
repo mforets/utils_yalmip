@@ -70,9 +70,11 @@ if strfind(class(c_p(1)), 'sdpvar')
         c_p = value(c_p);
     end
 
-    %if any(isnan(c_p))
-    %    fprintf(2, 'Warning: NaN detected.\n');
-    %end
+    if any(isnan(c_p))
+      warning('NaN detected. Removing NaN values. \n');
+      mono_p = mono_p(c_p ~= NaN);
+      c_p = c_p(c_p ~= NaN);
+    end
 end
 
 % MISSING: to ignore NaN values!
