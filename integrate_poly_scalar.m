@@ -49,7 +49,11 @@ function ipx = integrate_poly_scalar(p, x, I, options)
 if strfind(class(c_p(1)), 'sdpvar')
     got_evaluated = 0;
     % try to evaluate
-    c_p = value(c_p);
+    if ~exist('value')
+        c_p = double(c_p);
+    else
+        c_p = value(c_p);
+    end
 elseif strfind(class(c_p(1)), 'double')
     got_evaluated = 1;
 else

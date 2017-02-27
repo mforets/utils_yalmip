@@ -45,8 +45,14 @@ xdom = linspace(I(1), I(2), 1e3);
 if strfind(class(c_p(1)), 'sdpvar')
     
     got_evaluated = 0;
+    
     % try to evaluate
-    c_p = value(c_p);
+    if ~exist('value')
+        c_p = double(c_p);
+    else
+        c_p = value(c_p);
+    end
+    
     if any(isnan(c_p))
         fprintf(2, 'Warning: NaN detected.\n');
     end

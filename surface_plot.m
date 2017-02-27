@@ -38,6 +38,9 @@ function surface_plot(w, x, xb, options)
 % if necessary. This means that we can call this function directly after
 % an optimize(..) command, as in the example 2 above.
 %
+% - As of yalmip('version')=20160930, the keyword 'value' exists;
+% otherwise, 'double' is used.
+%
 % See also: superlevel_set_plot
 
 %==========================================================================
@@ -48,8 +51,14 @@ function surface_plot(w, x, xb, options)
 % check if the coefficients are evaluated or not
 if strfind(class(cw(1)), 'sdpvar')
     got_evaluated = 0;
-    % try to evaluate
-    cw = value(cw);
+
+    % try to evaluate 
+    if ~exist('value')
+        cw = double(cw);
+    else
+        cw = value(cw);
+    end    
+    
 elseif strfind(class(cw(1)), 'double')
     got_evaluated = 1;
 else
