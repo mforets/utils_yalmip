@@ -54,7 +54,7 @@ if strfind(class(c_p(1)), 'sdpvar')
     end
     
     if any(isnan(c_p))
-        fprintf(2, 'Warning: NaN detected.\n');
+        warning('NaN detected.');
     end
     
 elseif strfind(class(c_p(1)), 'double')
