@@ -47,7 +47,7 @@ function moments = getLebesgueMoments(d, box, YalmipBasis, p)
 %
 %ans =
 %
-%    1.0000    0.5429    0.5429    0.5429    0.3969    0.2947    0.2947    0.3969    0.2947    0.3969
+%    1.0000    0.5429    0.3969    0.3209    0.2733
 %
 % NOTES:
 %
