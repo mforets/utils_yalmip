@@ -26,21 +26,17 @@ ans =
 
      1
 
->> coef(f)
+>> coef(f)'
 
 ans =
 
-     1
-    -1
-     4
-
->> pow(f)
+     1    -1     4
+     
+>> pow(f)'
 
 ans =
 
-     0
-     3
-     4
+     0     3     4
 ```
 
-Of course, we the ordering of coef and pow match.
+Of course, the ordering of coef and pow match.
