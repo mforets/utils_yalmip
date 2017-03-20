@@ -6,7 +6,7 @@ An MPOL object X has the following internal structure:
 - X.POW = double array, row = monomial index, column = variable power
 - X.COEF = double vector, row = monomial coefficient
 
-```
+```matlab
 >> mpol x
 >> f = 1 - x^3 + 4*x^4
 
