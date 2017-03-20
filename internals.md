@@ -6,20 +6,41 @@ An MPOL object X has the following internal structure:
 - X.POW = double array, row = monomial index, column = variable power
 - X.COEF = double vector, row = monomial coefficient
 
-```matlab
-% assume that f is a mpol object
+```
+>> mpol x
+>> f = 1 - x^3 + 4*x^4
 
-% get the list of variables:
-%listvar(f)
+Scalar polynomial
 
-% get the degree:
-%deg(f)
+1-x^3+4x^4
 
-% get the list of coefficients
-%coef(f)
+>> listvar(f)
 
-% get the powers of the monomials involved
-%pow(f_mpol)
+Scalar polynomial
+
+x
+
+>> length(ans)
+
+ans =
+
+     1
+
+>> coef(f)
+
+ans =
+
+     1
+    -1
+     4
+
+>> pow(f)
+
+ans =
+
+     0
+     3
+     4
 ```
 
-Of course, we shall assume that coef and pow do match.
+Of course, we the ordering of coef and pow match.
