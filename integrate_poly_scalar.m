@@ -43,7 +43,12 @@ function ipx = integrate_poly_scalar(p, x, I, options)
 % sdp problem then we must beforehand check if it is evaluated or not.
 
 % extract coefficients and monomials list
-[c_p, mono_p] = coefficients(p, x);
+if ~isempty(x)
+%if (~exist('x', 'var') || isempty(x))
+    [c_p, mono_p] = coefficients(p, x);
+else
+    [c_p, mono_p] = coefficients(p);
+end
 
 % check if the coefficients are evaluated or not
 if strfind(class(c_p(1)), 'sdpvar')
