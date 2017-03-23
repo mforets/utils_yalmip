@@ -38,7 +38,7 @@ function [f_sdpvar] = mpol_to_sdpvar(f_mpol)
 % - Should extend to polynomial vector.
 % - Add possiblity to name the variables.
 %
-% See also: integrate_poly_scalar
+% See also: sdpvar_to_mpol, integrate_poly_scalar
 %
 % =========================================================================
 
