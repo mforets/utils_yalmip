@@ -5,7 +5,7 @@ function ipx = integrate_poly_scalar(p, x, I, options)
 %
 %   "p" - polynomial scalar.
 %
-%   "x" - sdpvar object, argument of p.
+%   "x" - (optional) sdpvar object, argument of p.
 %
 %   "I" - The limits are of integration, I \subset R.
 %

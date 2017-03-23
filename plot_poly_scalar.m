@@ -5,11 +5,11 @@ function plot_poly_scalar(p, x, I, options)
 %
 %   "p" - polynomial scalar.
 %
-%   "x" - sdpvar object, argument of p.
+%   "x" - (optional) sdpvar object, argument of p. 
 %
 %   "I" - The limits of the plot, I \subset R.
 %
-%   "options" - options to plot (e.g. color). NOT IMPLEMENTED.
+%   "options" - (optional) options to plot (e.g. color). 
 %
 % OUTPUTS: 
 %
@@ -39,7 +39,12 @@ function plot_poly_scalar(p, x, I, options)
 xdom = linspace(I(1), I(2), 1e3);
 
 % extract coefficients and monomials list
-[c_p, mono_p] = coefficients(p, x);
+if ~isempty(x)
+%if (~exist('x', 'var') || isempty(x))
+    [c_p, mono_p] = coefficients(p, x);
+else
+    [c_p, mono_p] = coefficients(p);
+end
 
 % check if the coefficients are evaluated or not
 if strfind(class(c_p(1)), 'sdpvar')

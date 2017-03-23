@@ -1,19 +1,9 @@
-function [f_sdpvar] = mpol_to_sdpvar(f_mpol, x)
-% MPOL_2_SDPVAR Transform mpol object (Gloptipoly) to sdpvar object (YALMIP). 
-%
+function [f_sdpvar] = mpol_to_sdpvar(f_mpol)
+% MPOL_TO_SDPVAR Transform mpol object (Gloptipoly) to sdpvar object (YALMIP). 
 %
 % INPUTS: 
 %
 %   "f" - Scalar polynomial as a (Gloptipoly's) mpol object.
-% 
-%   "x" - (optional) strings containing the names of the variables of the 
-%         function f.
-%
-% OUTPUTS: 
-%
-%   The polynomial as a YALMIP's sdpvar object. If x is not given, the variables 
-%   of the output function are x1, x2, ..., xn, where n is the number of
-%   variables of f.
 %
 % EXAMPLES:
 %
@@ -34,23 +24,32 @@ function [f_sdpvar] = mpol_to_sdpvar(f_mpol, x)
 %
 % TESTS:
 % 
-% - Test a constant polynomial:
+% - Testing a constant polynomial:
 %
+% >> mpol x
+% >> mpol_to_sdpvar(x-x+1)
+% 
+% ans =
+% 
+%      1
 %
-% NOTES: 
+% TO-DO: 
 %  
 % - Should extend to polynomial vector.
+% - Add possiblity to name the variables.
 %
 % See also: integrate_poly_scalar
 %
-%==========================================================================
+% =========================================================================
 
 if nargin == 1 % did not get variable names
     got_variables_names = 0;
 end
 
-if ~got_variables_names
-    
+if got_variables_names
+    error('NotImplementedError: User-defined variable names are not implemented.')
+end
+
 % number of variables of the (possible multivariate) polynomial f_mpol
 n = length(listvar(f_mpol));
 
@@ -58,11 +57,10 @@ if n > 1
     error('NotImplementedError: Number of variables greater than 1 is not implemented.')
 end
 
-if n == 0    % contant case is a corner case: the pow returns 0, the coef returns ~= 0, but the n is set to 0 
-   n = 1;
-   %sdpvar x
-   %f_sdpvar = x - x + coef(f_mpol);
-   %return 
+% contant case is a corner case
+if n == 0    
+    % the pow returns 0, the coef returns ~= 0, but the n is set to 0 
+    n = 1;
 end
 
 % define a vector of sdp variables
@@ -70,10 +68,4 @@ x = sdpvar(n, 1);
 
 f_sdpvar = coef(f_mpol)' * x.^pow(f_mpol);
 
-elseif got_variables_names 
-    error('NotImplementedError: User-defined variable names are not implemented.')
-    
 end
-
-end
-
